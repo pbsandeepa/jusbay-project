@@ -1,0 +1,29 @@
+body{
+	font-family: sans-serif;
+}
+input, select{
+	border-radius: 3px;
+    border: 1px solid black;
+    height: 24px;
+}
+.container{
+	display: grid;
+	margin-top: 30px;
+}
+tr:nth-child(even) {
+	background: #CCC
+}
+tr:nth-child(odd) {
+	background: #FFF
+}
+td{
+	padding: 5px;
+}
+.add-input{
+	width: 50%;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.text-input{
+	width: 200px;
+}
