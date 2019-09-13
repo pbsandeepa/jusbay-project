@@ -27,3 +27,6 @@ td{
 .text-input{
 	width: 200px;
 }
+.done{
+	vertical-align: super;
+}

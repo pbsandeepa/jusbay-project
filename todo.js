@@ -21,15 +21,18 @@ var data = [
 	}
 ]
 
+//localStorage.setItem('data',JSON.stringify(todoData));
+//var data = localStorage.getItem('data');
+
 function dataTable(data){
-	// if(data.length > pageLength){
-	// 	data = data.slice(0, pageLength)
-	// }
+	
 	document.getElementById("todo-table-body").innerHTML = "";
+
+
 	for(var i in data){
 		console.log(data[i])
 		document.getElementById("todo-table-body").innerHTML += "<tr><td>"+data[i].no+"</td>"+
-		"<td><span class='task-text'>"+data[i].task+"</span></td><td><input type='checkbox' "+data[i].status+"></td><td><button id="+data[i].no+" class='btn btn-info edit-btn'>Edit</button><button id="+data[i].no+" class='btn btn-info sub-btn' style='display:none'>Submit</button><button id="+data[i].no+" class='btn btn-warning delete-btn'>Delete</button></td></tr>"
+		"<td><span class='task-text'>"+data[i].task+"</span></td><td><input class='input-check' type='checkbox' "+data[i].status+"><span class='done'>"+(data[i].status ? "Done" : "")+"</span></td><td><button id="+data[i].no+" class='btn btn-info edit-btn'>Edit</button><button id="+data[i].no+" class='btn btn-info sub-btn' style='display:none'>Submit</button><button id="+data[i].no+" class='btn btn-warning delete-btn'>Delete</button></td></tr>"
 	}
 
 	$(".delete-btn").on('click',function(){
@@ -57,6 +60,14 @@ function dataTable(data){
 		textInput.replaceWith('<span class="task-text">'+val+'</span>')
 		$(this).hide();
 		$(this).siblings('button.edit-btn').show()
+	})
+
+	$(".input-check").on('change',function(){
+		if($(this).prop("checked")){
+			$(this).next('span').text('Done')
+		}else{
+			$(this).next('span').text('')
+		}
 	})
 }
 dataTable(data)
